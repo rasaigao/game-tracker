@@ -28,5 +28,6 @@ captures/
 *.iml
 GameTracker/.idea/workspace.xml
 
+
 # Keystore files
 *.jks
