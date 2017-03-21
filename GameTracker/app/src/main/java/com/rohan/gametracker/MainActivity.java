@@ -177,6 +177,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.check_status:
 
+                i = new Intent(this, StatusActivity.class);
+                i.putExtra("HAVE_BUILDING", haveBuilding);
+                i.putExtra("BALANCE", mBankBalance);
+
+
                 break;
 
             case R.id.next_turn:
