@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.rohan.gametracker.PowerSourceActivity">
+
+    <Button
+        android:id="@+id/button_coal"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:text="Coal (Cost: 10, Production: 2)"/>
+    <Button
+        android:id="@+id/button_wind"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:text="Wind (Cost:15, Production: 5)"/>
+    <Button
+        android:id="@+id/button_solar"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:text="Solar (Cost:20, Production: 8)"/>
+    <Button
+        android:id="@+id/button_hydro"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:text="Hydro (Cost:35, Production: 15)"/>
+    <Button
+        android:id="@+id/button_nuke"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:text="Nuclear (Cost:50, Production: 18)"/>
+    <TextView
+        android:id="@+id/balance_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textSize="32sp"
+        android:textColor="@color/colorBlack"
+        android:text="$0"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Current Balance"/>
+</LinearLayout>
