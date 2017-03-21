@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.rohan.gametracker.Buildings.Achievement;
 import com.rohan.gametracker.Buildings.PowerSource;
@@ -136,19 +137,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent i;
         switch (v.getId()) {
             case R.id.add_consumer:
-                i = new Intent(this, ConsumerActivity.class);
-                i.putExtra("BALANCE", mBankBalance);
-                i.putExtra("HAVE_BUILDING", haveBuilding);
-                startActivityForResult(i, 0);
+                if(spaceOnBoard()) {
+                    i = new Intent(this, ConsumerActivity.class);
+                    i.putExtra("BALANCE", mBankBalance);
+                    i.putExtra("HAVE_BUILDING", haveBuilding);
+                    startActivityForResult(i, 0);
+                }
+                else{
+                    boardFilledMessage();
+                }
 
                 break;
 
             case R.id.add_producer:
-
-                i = new Intent(this, PowerSourceActivity.class);
-                i.putExtra("BALANCE", mBankBalance);
-                startActivityForResult(i, 1);
-
+                if(spaceOnBoard()) {
+                    i = new Intent(this, PowerSourceActivity.class);
+                    i.putExtra("BALANCE", mBankBalance);
+                    startActivityForResult(i, 1);
+                }
+                else{
+                    boardFilledMessage();
+                }
                 break;
 
             case R.id.add_one_deposit:
@@ -167,6 +176,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.check_status:
+
                 break;
 
             case R.id.next_turn:
@@ -205,6 +215,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return null;
 
         }
+    }
+    private boolean spaceOnBoard(){
+        return(mConsumerList.size() + mPowerSourceList.size() <= 16);
+    }
+    private void boardFilledMessage(){
+
+        Toast.makeText(this.getApplicationContext(), "Sorry! Your board is filled. Try selling a building before before buying another!",
+                Toast.LENGTH_LONG).show();
     }
 
     public PowerSource.Type getPowerSourceType(int i) {
