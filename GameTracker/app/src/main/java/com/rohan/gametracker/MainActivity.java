@@ -2,20 +2,25 @@ package com.rohan.gametracker;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.rohan.gametracker.Buildings.Achievement;
 import com.rohan.gametracker.Buildings.PowerSource;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private int mTurnNumber = 0;
+    private int mTurnNumber = 1;
     private int mProduction = 0;
     private int mConsumption = 0;
     private int mBankBalance = 10;
@@ -25,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private boolean noNewConsumer;
     private boolean noNewProducer;
+
+    private ImageView mLoadingImage;
 
     private boolean[] haveBuilding = {false, false, false, false};
 
@@ -68,10 +75,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mConsumptionText = (TextView) findViewById(R.id.total_consumption);
         mProductionText = (TextView) findViewById(R.id.total_production);
         mTurnNumberText = (TextView) findViewById(R.id.turn_number);
+        mTurnNumberText.setText(Integer.toString(mTurnNumber));
         mProfitText = (TextView) findViewById(R.id.profit);
         mBankBalanceText = (TextView) findViewById(R.id.bank_balance);
         mBankBalanceText.setText(Integer.toString(mBankBalance));
 
+        mLoadingImage = (ImageView)findViewById(R.id.image_view);
+        mLoadingImage.bringToFront();
+        mLoadingImage.setVisibility(View.GONE);
         noNewConsumer = true;
         noNewProducer = true;
 
@@ -195,11 +206,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void nextTurn() {
 
+       // mLoadingImage.setImageDrawable(getResources().getDrawable(R.drawable.hourglass));
+        mLoadingImage.setVisibility(View.VISIBLE);
+
+        GlideDrawableImageViewTarget imageViewTarget = new GlideDrawableImageViewTarget(mLoadingImage);
+        Glide.with(this).load(R.drawable.hourglass1).into(imageViewTarget);
+
+        MyCountDown timer = new MyCountDown(2000, 1000);
+        timer.start();
+
         updateValues();
         mBankBalance += (mProduction - mConsumption);
         mBankBalanceText.setText(Integer.toString(mBankBalance));
-        ++mTurnNumber;
+        mTurnNumber++;
         mTurnNumberText.setText(Integer.toString(mTurnNumber));
+
+
 
     }
 
@@ -297,6 +319,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mProductionText.setText(Integer.toString(mProduction));
         mProfitText.setText(Integer.toString(mProduction-mConsumption));
 
+        if(mConsumerList.size() == 5){
+            youWin();
+
+        }
+        if(mBankBalance < 0){
+            youLose();
+        }
+
     }
 
     private int[] getPowerSourceNumbers(){
@@ -321,5 +351,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
         return typeArray;
+    }
+    private void youWin(){
+
+    }
+    private void youLose(){
+
+    }
+
+    private class MyCountDown extends CountDownTimer
+    {
+        long duration, interval;
+        public MyCountDown(long millisInFuture, long countDownInterval) {
+            super(millisInFuture, countDownInterval);
+            // TODO Auto-generated constructor stub
+            start();
+        }
+
+        @Override
+        public void onFinish() {
+
+            mLoadingImage.setVisibility(View.GONE);
+
+        }
+
+        @Override
+        public void onTick(long duration) {
+            // could set text for a timer here
+        }
     }
 }

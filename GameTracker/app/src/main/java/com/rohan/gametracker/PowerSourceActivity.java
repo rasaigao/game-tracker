@@ -44,6 +44,18 @@ public class PowerSourceActivity extends AppCompatActivity implements View.OnCli
         hydro.setOnClickListener(this);
         nuclear.setOnClickListener(this);
 
+        Button b = (Button) findViewById(R.id.back_button2);
+        if(b != null) {
+            b.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    finish();
+
+                }
+            });
+        }
+
     }
 
     @Override

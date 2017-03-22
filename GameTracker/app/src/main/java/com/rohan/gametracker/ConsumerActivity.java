@@ -36,6 +36,18 @@ public class ConsumerActivity extends AppCompatActivity implements View.OnClickL
         cityHall = (Button) findViewById(R.id.button_ch);
         hospital = (Button) findViewById(R.id.button_hosp);
 
+        Button b = (Button) findViewById(R.id.back_button1);
+        if(b != null) {
+            b.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    finish();
+
+                }
+            });
+        }
+
         disableBuiltConsumers();
     }
     private void disableBuiltConsumers(){
