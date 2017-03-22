@@ -19,17 +19,17 @@
         android:id="@+id/button_school"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:text="School (Cost:50, Consumption: 10)"/>
+        android:text="School (Cost:50, Consumption: 15"/>
     <Button
         android:id="@+id/button_ch"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:text="City Hall (Cost:100, Consumption: 10)"/>
+        android:text="City Hall (Cost:100, Consumption: 30)"/>
     <Button
         android:id="@+id/button_hosp"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:text="Hospital (Cost:200, Consumption: 10)"/>
+        android:text="Hospital (Cost:200, Consumption: 50)"/>
     <TextView
         android:id="@+id/balance_text"
         android:layout_width="wrap_content"

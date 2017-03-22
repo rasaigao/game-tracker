@@ -180,7 +180,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 i = new Intent(this, StatusActivity.class);
                 i.putExtra("HAVE_BUILDING", haveBuilding);
                 i.putExtra("BALANCE", mBankBalance);
-
+                i.putExtra("TYPE_NUMS", getPowerSourceNumbers());
+                startActivity(i);
 
                 break;
 
@@ -278,11 +279,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     private void updateValues(){
         if (!noNewConsumer) {
+            mConsumption = 0;
             for (Achievement a : mConsumerList) {
                 mConsumption += a.getConsumption();
             }
         }
         if (!noNewProducer) {
+            mProduction = 0;
             for (PowerSource ps : mPowerSourceList) {
                 mProduction += ps.getProduction();
             }
@@ -294,5 +297,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mProductionText.setText(Integer.toString(mProduction));
         mProfitText.setText(Integer.toString(mProduction-mConsumption));
 
+    }
+
+    private int[] getPowerSourceNumbers(){
+        int[] typeArray = {0,0,0,0,0};
+        for (PowerSource p : mPowerSourceList){
+            switch(p.getType()){
+                case COAL:
+                    typeArray[0]++;
+                    break;
+                case WIND:
+                    typeArray[1]++;
+                    break;
+                case SOLAR:
+                    typeArray[2]++;
+                    break;
+                case HYDRO:
+                    typeArray[3]++;
+                    break;
+                case NUCLEAR:
+                    typeArray[4]++;
+                    break;
+            }
+        }
+        return typeArray;
     }
 }
