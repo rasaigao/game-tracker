@@ -14,6 +14,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Amount"
+        android:id="@+id/payment_title"
+        android:layout_margin="20dp"
+        android:textSize="26sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:fontFamily="monospace"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Amount"
         android:layout_margin="20dp"
         android:textSize="20sp"
         android:textColor="@color/colorPrimaryDark"
@@ -21,13 +30,14 @@
     <NumberPicker
         android:id="@+id/dollar_amount"
         android:layout_width="wrap_content"
-        android:layout_height="100dp">
+        android:layout_height="80dp">
 
     </NumberPicker>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Number of Turns"
+        android:id="@+id/turns_title"
         android:layout_margin="20dp"
         android:textSize="20sp"
         android:textColor="@color/colorPrimaryDark"
@@ -35,15 +45,29 @@
     <NumberPicker
         android:id="@+id/payment_turn_length"
         android:layout_width="wrap_content"
-        android:layout_height="100dp">
+        android:layout_height="80dp">
 
     </NumberPicker>
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/back_button"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginTop="20dp">
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/back_button"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal|bottom"
+            android:text="Cancel Payment"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/make_payment"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal|bottom"
+            android:text="Confirm Payment"/>
 
-        android:text="Return "/>
+    </LinearLayout>
 </LinearLayout>
