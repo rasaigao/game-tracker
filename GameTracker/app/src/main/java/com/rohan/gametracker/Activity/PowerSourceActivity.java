@@ -1,4 +1,4 @@
-package com.rohan.gametracker;
+package com.rohan.gametracker.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,12 +9,15 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ConsumerActivity extends AppCompatActivity implements View.OnClickListener {
+import com.rohan.gametracker.R;
 
-    private Button grocery;
-    private Button school;
-    private Button cityHall;
-    private Button hospital;
+public class PowerSourceActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private Button coal;
+    private Button wind;
+    private Button solar;
+    private Button hydro;
+    private Button nuclear;
 
     private int valueBalance;
     private boolean[] haveBuilding = new boolean[4];
@@ -22,21 +25,28 @@ public class ConsumerActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_consumer);
+        setContentView(R.layout.activity_power_source);
         TextView bankBalance;
         bankBalance = (TextView) findViewById(R.id.balance_text);
 
         Intent i = getIntent();
         valueBalance = i.getIntExtra("BALANCE", 0);
-        haveBuilding = i.getBooleanArrayExtra("HAVE_BUILDING");
+
         bankBalance.setText("$" + valueBalance);
 
-        grocery = (Button) findViewById(R.id.button_gs);
-        school = (Button) findViewById(R.id.button_school);
-        cityHall = (Button) findViewById(R.id.button_ch);
-        hospital = (Button) findViewById(R.id.button_hosp);
+        coal = (Button) findViewById(R.id.button_coal);
+        wind = (Button) findViewById(R.id.button_wind);
+        solar = (Button) findViewById(R.id.button_solar);
+        hydro = (Button) findViewById(R.id.button_hydro);
+        nuclear = (Button) findViewById(R.id.button_nuke);
 
-        Button b = (Button) findViewById(R.id.back_button1);
+        coal.setOnClickListener(this);
+        wind.setOnClickListener(this);
+        solar.setOnClickListener(this);
+        hydro.setOnClickListener(this);
+        nuclear.setOnClickListener(this);
+
+        Button b = (Button) findViewById(R.id.back_button2);
         if(b != null) {
             b.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -47,22 +57,6 @@ public class ConsumerActivity extends AppCompatActivity implements View.OnClickL
                 }
             });
         }
-        grocery.setClickable(!haveBuilding[0]);
-        grocery.setEnabled(!haveBuilding[0]);
-        school.setClickable(!haveBuilding[1]);
-        school.setEnabled(!haveBuilding[1]);
-        cityHall.setClickable(!haveBuilding[2]);
-        cityHall.setEnabled(!haveBuilding[2]);
-        hospital.setClickable(!haveBuilding[3]);
-        hospital.setEnabled(!haveBuilding[3]);
-        disableBuiltConsumers();
-    }
-    private void disableBuiltConsumers(){
-
-        grocery.setOnClickListener(this);
-        school.setOnClickListener(this);
-        cityHall.setOnClickListener(this);
-        hospital.setOnClickListener(this);
 
     }
 
@@ -70,9 +64,9 @@ public class ConsumerActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View v){
         Intent resultIntent;
         switch (v.getId()) {
-            case R.id.button_gs:
+            case R.id.button_coal:
 
-                if(valueBalance >= 20) {
+                if(valueBalance >= 10) {
                     resultIntent = new Intent();
                     resultIntent.putExtra("SWITCHER", 0);
                     setResult(Activity.RESULT_OK, resultIntent);
@@ -83,8 +77,8 @@ public class ConsumerActivity extends AppCompatActivity implements View.OnClickL
                 }
                 break;
 
-            case R.id.button_school:
-                if(valueBalance >= 50) {
+            case R.id.button_wind:
+                if(valueBalance >= 15) {
                     resultIntent = new Intent();
                     resultIntent.putExtra("SWITCHER", 1);
                     setResult(Activity.RESULT_OK, resultIntent);
@@ -95,9 +89,9 @@ public class ConsumerActivity extends AppCompatActivity implements View.OnClickL
                 }
                 break;
 
-            case R.id.button_ch:
+            case R.id.button_solar:
 
-                if(valueBalance >= 100) {
+                if(valueBalance >= 20) {
                     resultIntent = new Intent();
                     resultIntent.putExtra("SWITCHER", 2);
                     setResult(Activity.RESULT_OK, resultIntent);
@@ -108,9 +102,9 @@ public class ConsumerActivity extends AppCompatActivity implements View.OnClickL
                 }
                 break;
 
-            case R.id.button_hosp:
+            case R.id.button_hydro:
 
-                if(valueBalance >= 200) {
+                if(valueBalance >= 35) {
                     resultIntent = new Intent();
                     resultIntent.putExtra("SWITCHER", 3);
                     setResult(Activity.RESULT_OK, resultIntent);
@@ -121,7 +115,21 @@ public class ConsumerActivity extends AppCompatActivity implements View.OnClickL
                 }
                 break;
 
+            case R.id.button_nuke:
+
+                if(valueBalance >= 50) {
+                    resultIntent = new Intent();
+                    resultIntent.putExtra("SWITCHER", 4);
+                    setResult(Activity.RESULT_OK, resultIntent);
+                    finish();
+                }
+                else{
+                    notEnough();
+                }
+                break;
+
             default:
+                break;
         }
 
 
@@ -131,4 +139,3 @@ public class ConsumerActivity extends AppCompatActivity implements View.OnClickL
                 Toast.LENGTH_LONG).show();
     }
 }
-

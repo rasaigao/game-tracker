@@ -1,4 +1,4 @@
-package com.rohan.gametracker;
+package com.rohan.gametracker.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.TextView;
+
+import com.rohan.gametracker.R;
 
 public class PaymentActivity extends AppCompatActivity {
 
@@ -72,8 +74,8 @@ public class PaymentActivity extends AppCompatActivity {
             });
         }
         Button b2 = (Button) findViewById(R.id.make_payment);
-        if(b != null) {
-            b.setOnClickListener(new View.OnClickListener() {
+        if(b2 != null) {
+            b2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 

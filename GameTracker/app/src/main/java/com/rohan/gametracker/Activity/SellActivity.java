@@ -1,4 +1,4 @@
-package com.rohan.gametracker;
+package com.rohan.gametracker.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+
+import com.rohan.gametracker.R;
 
 public class SellActivity extends AppCompatActivity implements View.OnClickListener, android.widget.CompoundButton.OnCheckedChangeListener {
     

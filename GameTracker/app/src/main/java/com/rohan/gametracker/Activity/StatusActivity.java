@@ -1,4 +1,4 @@
-package com.rohan.gametracker;
+package com.rohan.gametracker.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.rohan.gametracker.R;
 
 public class StatusActivity extends AppCompatActivity {
 

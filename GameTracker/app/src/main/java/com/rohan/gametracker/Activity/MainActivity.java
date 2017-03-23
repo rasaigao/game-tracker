@@ -1,8 +1,7 @@
-package com.rohan.gametracker;
+package com.rohan.gametracker.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,8 +15,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.rohan.gametracker.Buildings.Achievement;
 import com.rohan.gametracker.Buildings.PowerSource;
+import com.rohan.gametracker.R;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
