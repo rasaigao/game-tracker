@@ -98,7 +98,7 @@ public class SellActivity extends AppCompatActivity implements View.OnClickListe
                 (TextView) findViewById(R.id.nuke_decrease)
         };
 
-        mBankBalance = (TextView) findViewById(R.id.balance_num);
+
 
         mTotalIncomeOnSale = (TextView) findViewById(R.id.total_income_on_sale);
         mConfirmSale = (Button) findViewById(R.id.confirm_sale);
@@ -108,7 +108,7 @@ public class SellActivity extends AppCompatActivity implements View.OnClickListe
         int valueBalance = i.getIntExtra("BALANCE", 0);
         typeArray = i.getIntArrayExtra("TYPE_NUMS");
 
-        mBankBalance.setText("$" + valueBalance);
+
 
         haveBuilding = i.getBooleanArrayExtra("HAVE_BUILDING");
 

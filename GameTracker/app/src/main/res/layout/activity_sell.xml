@@ -16,10 +16,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="Achievements"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textColor="@color/colorPrimaryDark"
         android:fontFamily="monospace"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="5dp"/>
 
 
     <TableLayout
@@ -28,6 +28,42 @@
         android:layout_below="@+id/achievements_label"
         android:layout_marginBottom="10dp"
         android:stretchColumns="2">
+        <TableRow>
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:text="Building Type"/>
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:textStyle="bold"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Owned?"/>
+            <TextView
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:layout_width="0dp"
+                android:textStyle="bold"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="Cost"/>
+            <TextView
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Sell"/>
+        </TableRow>
         <TableRow>
             <TextView
                 android:textColor="@color/colorBlack"
@@ -44,7 +80,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="Yes"/>
+                android:text="No"/>
             <TextView
                 android:textColor="#000000"
                 android:textSize="16sp"
@@ -76,7 +112,7 @@
                 android:id="@+id/sch_have"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="Yes"/>
+                android:text="No"/>
             <TextView
                 android:textColor="#000000"
                 android:textSize="16sp"
@@ -107,7 +143,7 @@
                 android:id="@+id/ch_have"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="Yes"/>
+                android:text="No"/>
             <TextView
                 android:textColor="#000000"
                 android:textSize="16sp"
@@ -138,7 +174,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="Yes"/>
+                android:text="No"/>
             <TextView
                 android:textColor="#000000"
                 android:textSize="16sp"
@@ -161,15 +197,77 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="Energy Sources"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textColor="@color/colorPrimaryDark"
         android:fontFamily="monospace"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="5dp"/>
 
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:stretchColumns="6">
+        <TableRow>
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:textStyle="bold"
+                android:layout_weight="1.5"
+                android:text="Producer Type"/>
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Cost"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:text="Owned"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:textColor="@color/colorBlack"
+                android:layout_weight="0.4"
+                android:textSize="16sp"
+                android:gravity="center"/>
+            <TextView
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:text="To Sell"
+                android:layout_weight="1"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:textColor="@color/colorBlack"
+                android:layout_weight="0.4"
+                android:textSize="16sp"
+                android:gravity="center"
+                />
+        </TableRow>
+        <TableRow>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_weight="1"
+            android:background="#FFFFFF"
+            />
+        </TableRow>
+
         <TableRow>
             <TextView
                 android:textColor="@color/colorBlack"
@@ -545,15 +643,7 @@
                 android:text="0"/>
         </TableRow>
     </TableLayout>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorBlack"
-        android:id="@+id/balance_num"
-        android:layout_gravity="center_horizontal"
 
-        android:textSize="20sp"
-        android:text="$0"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
