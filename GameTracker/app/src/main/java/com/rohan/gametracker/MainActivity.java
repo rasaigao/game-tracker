@@ -194,15 +194,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.add_one_deposit:
+                i = new Intent(this, PaymentActivity.class);
+                i.putExtra("ONE_TIME", true);
+                i.putExtra("DEPOSIT", true);
+                startActivityForResult(i, 3);
                 break;
 
             case R.id.add_rec_deposit:
+                i = new Intent(this, PaymentActivity.class);
+                i.putExtra("ONE_TIME", false);
+                i.putExtra("DEPOSIT", true);
+                startActivityForResult(i, 3);
                 break;
 
+
             case R.id.add_one_payment:
+                i = new Intent(this, PaymentActivity.class);
+                i.putExtra("ONE_TIME", true);
+                i.putExtra("DEPOSIT", false);
+                startActivityForResult(i, 3);
                 break;
 
             case R.id.add_rec_payment:
+                i = new Intent(this, PaymentActivity.class);
+                i.putExtra("ONE_TIME", false);
+                i.putExtra("DEPOSIT", false);
+                startActivityForResult(i, 4);
                 break;
 
             case R.id.sell_producer:
