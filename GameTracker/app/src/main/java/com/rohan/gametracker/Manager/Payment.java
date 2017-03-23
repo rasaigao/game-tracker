@@ -9,12 +9,21 @@ public class Payment {
     private boolean mDeposit;
 
     public Payment(int amount, int turns, boolean deposit){
+
+        setDeposit(deposit);
         setAmount(amount);
         setTurns(turns);
-        setDeposit(deposit);
+
+
     }
     public void setAmount(int amount){
-        this.mAmount = amount;
+        if(!mDeposit){
+            this.mAmount = (0-amount);
+        }
+        else{
+            this.mAmount = amount;
+        }
+
     }
 
     public void setTurns(int turns){

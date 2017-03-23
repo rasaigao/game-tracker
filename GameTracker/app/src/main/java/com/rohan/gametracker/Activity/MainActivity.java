@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.rohan.gametracker.Buildings.Achievement;
 import com.rohan.gametracker.Buildings.PowerSource;
+import com.rohan.gametracker.Manager.Payment;
 import com.rohan.gametracker.R;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private int mProduction = 0;
     private int mConsumption = 0;
     private int mBankBalance = 10;
+    private int totalPayments;
 
 
     private int switcher = 0;
@@ -47,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //Building Lists
     private ArrayList<PowerSource> mPowerSourceList = new ArrayList<>();
     private ArrayList<Achievement> mConsumerList = new ArrayList<>();
+    private ArrayList<Payment> mPaymentList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -203,7 +206,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 i = new Intent(this, PaymentActivity.class);
                 i.putExtra("ONE_TIME", false);
                 i.putExtra("DEPOSIT", true);
-                startActivityForResult(i, 3);
+                startActivityForResult(i, 4);
                 break;
 
 
@@ -211,14 +214,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 i = new Intent(this, PaymentActivity.class);
                 i.putExtra("ONE_TIME", true);
                 i.putExtra("DEPOSIT", false);
-                startActivityForResult(i, 3);
+                startActivityForResult(i, 5);
                 break;
 
             case R.id.add_rec_payment:
                 i = new Intent(this, PaymentActivity.class);
                 i.putExtra("ONE_TIME", false);
                 i.putExtra("DEPOSIT", false);
-                startActivityForResult(i, 4);
+                startActivityForResult(i, 6);
                 break;
 
             case R.id.sell_producer:
@@ -324,6 +327,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        int amount;
+        int turns;
+
         switch (requestCode) {
             case (0): {
                 if (resultCode == Activity.RESULT_OK) {
@@ -346,6 +352,43 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (resultCode == Activity.RESULT_OK) {
                     sellItems(data.getBooleanArrayExtra("NEW_CONSUMERS"), data.getIntArrayExtra("NEW_PRODUCERS"), data.getIntExtra("INCOME", 0));
                 }
+                break;
+            case (3):
+                //one deposit
+                if (resultCode == Activity.RESULT_OK) {
+                    turns = 1;
+                    amount = data.getIntExtra("AMOUNT", 0);
+                    mPaymentList.add(new Payment(amount, turns, true));
+                }
+
+                break;
+            case (4):
+                //rec deposit
+                if (resultCode == Activity.RESULT_OK) {
+                    turns = data.getIntExtra("TURNS", 0);
+                    amount = data.getIntExtra("AMOUNT", 0);
+                    mPaymentList.add(new Payment(amount, turns, true));
+                }
+
+                break;
+            case (5):
+                //one payment
+                if (resultCode == Activity.RESULT_OK) {
+                    turns = 1;
+                    amount = data.getIntExtra("AMOUNT", 0);
+                    mPaymentList.add(new Payment(amount, turns, false));
+                }
+
+                break;
+            case(6):
+                //rec payment
+                if (resultCode == Activity.RESULT_OK) {
+                    turns = data.getIntExtra("TURNS", 0);
+                    amount = data.getIntExtra("AMOUNT", 0);
+                    mPaymentList.add(new Payment(amount, turns, false));
+                }
+
+                break;
         }
         updateValues();
 
@@ -365,6 +408,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         noNewProducer = true;
         noNewConsumer = true;
+        makePayments();
         mBankBalanceText.setText(Integer.toString(mBankBalance));
         mConsumptionText.setText(Integer.toString(mConsumption));
         mProductionText.setText(Integer.toString(mProduction));
@@ -461,6 +505,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         noNewProducer = false;
         noNewConsumer = false;
         updateValues();
+    }
+
+    public void makePayments(){
+        if(!mPaymentList.isEmpty()){
+            totalPayments = 0;
+            for(Payment p : mPaymentList){
+                if(p.getTurns() > 0) {
+                    totalPayments += p.getAmount();
+                    mBankBalance += p.getAmount();
+                    p.setTurns(p.getTurns() - 1);
+                }
+            }
+            ((TextView) findViewById(R.id.fees_deposit)).setText(Integer.toString(totalPayments));
+        }
     }
 
 }

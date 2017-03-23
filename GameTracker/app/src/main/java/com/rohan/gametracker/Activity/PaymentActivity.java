@@ -1,5 +1,6 @@
 package com.rohan.gametracker.Activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -78,7 +79,15 @@ public class PaymentActivity extends AppCompatActivity {
             b2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Intent resultIntent;
+                    resultIntent = new Intent();
+                    resultIntent.putExtra("AMOUNT",mAmount.getValue());
+                    if(!oneTimePayment){
+                        resultIntent.putExtra("TURNS", mTurns.getValue());
+                    }
 
+                    setResult(Activity.RESULT_OK, resultIntent);
+                    finish();
                     finish();
 
                 }
