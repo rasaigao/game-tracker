@@ -130,7 +130,7 @@ public class ConsumerActivity extends AppCompatActivity implements View.OnClickL
     }
     private void notEnough(){
         Toast.makeText(this.getApplicationContext(), "Sorry! You cannot afford that!",
-                Toast.LENGTH_LONG).show();
+                Toast.LENGTH_SHORT).show();
     }
 }
 

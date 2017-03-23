@@ -136,6 +136,6 @@ public class PowerSourceActivity extends AppCompatActivity implements View.OnCli
     }
     private void notEnough(){
         Toast.makeText(this.getApplicationContext(), "Sorry! You cannot afford that!",
-                Toast.LENGTH_LONG).show();
+                Toast.LENGTH_SHORT).show();
     }
 }

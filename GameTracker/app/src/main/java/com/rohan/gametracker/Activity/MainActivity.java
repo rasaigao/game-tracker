@@ -265,7 +265,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         updateValues();
         mBankBalance += (mProduction - mConsumption);
-        mBankBalanceText.setText(Integer.toString(mBankBalance));
+        mBankBalanceText.setText("Account: $" + Integer.toString(mBankBalance));
         mTurnNumber++;
         mTurnNumberText.setText(Integer.toString(mTurnNumber));
 
@@ -298,7 +298,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void boardFilledMessage(){
 
         Toast.makeText(this.getApplicationContext(), "Sorry! Your board is filled. Try selling a building before before buying another!",
-                Toast.LENGTH_LONG).show();
+                Toast.LENGTH_SHORT).show();
     }
 
     public PowerSource.Type getPowerSourceType(int i) {
@@ -409,7 +409,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         noNewProducer = true;
         noNewConsumer = true;
         makePayments();
-        mBankBalanceText.setText(Integer.toString(mBankBalance));
+        mBankBalanceText.setText("Account: $" + Integer.toString(mBankBalance));
         mConsumptionText.setText(Integer.toString(mConsumption));
         mProductionText.setText(Integer.toString(mProduction));
         mProfitText.setText(Integer.toString(mProduction-mConsumption));
