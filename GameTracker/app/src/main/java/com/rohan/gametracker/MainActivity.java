@@ -184,6 +184,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.sell_producer:
+
+                i = new Intent(this, SellActivity.class);
+                i.putExtra("HAVE_BUILDING", haveBuilding);
+                i.putExtra("BALANCE", mBankBalance);
+                i.putExtra("TYPE_NUMS", getPowerSourceNumbers());
+                startActivity(i);
+
                 break;
 
             case R.id.check_status:

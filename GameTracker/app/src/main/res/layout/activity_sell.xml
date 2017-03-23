@@ -1,12 +1,581 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.rohan.gametracker.SellActivity">
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/achievements_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Achievements"
+        android:textSize="20sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:fontFamily="monospace"
+        android:layout_marginBottom="10dp"/>
+
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/achievements_label"
+        android:layout_marginBottom="10dp"
+        android:stretchColumns="2">
+        <TableRow>
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Grocery Store"/>
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:layout_weight="1"
+                android:id="@+id/gs_have"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Yes"/>
+            <TextView
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="10"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/gs_check"
+                />
+
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="School"/>
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:id="@+id/sch_have"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Yes"/>
+            <TextView
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="25"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/sc_check"
+                />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="City Hall"/>
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:id="@+id/ch_have"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Yes"/>
+            <TextView
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="50"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ch_check"
+                />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Hospital"/>
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:id="@+id/hosp_have"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Yes"/>
+            <TextView
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="100"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/hosp_check"
+                />
+        </TableRow>
+
+    </TableLayout>
+    <TextView
+        android:id="@+id/powersource_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Energy Sources"
+        android:textSize="20sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:fontFamily="monospace"
+        android:layout_marginBottom="10dp"/>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="6">
+        <TableRow>
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:text="Coal"/>
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="5"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/coal_total"
+                android:layout_weight="1"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:text="0"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:textColor="@color/colorBlack"
+                android:id="@+id/coal_decrease"
+                android:layout_weight="0.4"
+                android:textSize="16sp"
+                android:text="  -  "
+                android:gravity="center"
+                android:background="@drawable/num_selector_drawable"/>
+            <TextView
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:id="@+id/coal_to_sell"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:text="0"
+                android:layout_weight="1"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:textColor="@color/colorBlack"
+                android:id="@+id/coal_increase"
+                android:layout_weight="0.4"
+                android:textSize="16sp"
+                android:text="  +  "
+                android:gravity="center"
+                android:background="@drawable/num_selector_drawable"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <View
+
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_weight="1"
+                android:background="#FFFFFF"
+                />
+
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:text="Wind"/>
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="8"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/wind_total"
+                android:layout_weight="1"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:text="0"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.4"
+                android:id="@+id/wind_decrease"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:text="  -  "
+                android:gravity="center"
+                android:background="@drawable/num_selector_drawable"/>
+            <TextView
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:id="@+id/wind_to_sell"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:text="0"
+                android:layout_weight="1"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/wind_increase"
+                android:textColor="@color/colorBlack"
+                android:layout_weight="0.4"
+                android:textSize="16sp"
+                android:text="  +  "
+                android:gravity="center"
+                android:background="@drawable/num_selector_drawable"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <View
+
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_weight="1"
+                android:background="#FFFFFF"
+                />
+
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:text="Solar"/>
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="10"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/solar_total"
+                android:layout_weight="1"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:text="0"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:textColor="@color/colorBlack"
+                android:id="@+id/solar_decrease"
+                android:layout_weight="0.4"
+                android:textSize="16sp"
+                android:text="  -  "
+                android:gravity="center"
+                android:background="@drawable/num_selector_drawable"/>
+            <TextView
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:id="@+id/solar_to_sell"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:text="0"
+                android:layout_weight="1"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.4"
+                android:id="@+id/solar_increase"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:text="  +  "
+                android:gravity="center"
+                android:background="@drawable/num_selector_drawable"/>
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <View
+                android:id="@+id/line1"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_weight="1"
+                android:background="#FFFFFF"
+                 />
+
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:text="Hydro"/>
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:id="@+id/coal_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="18"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/hydro_total"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:text="0"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="0.4"
+                android:layout_height="match_parent"
+                android:textColor="@color/colorBlack"
+                android:id="@+id/hydro_decrease"
+                android:textSize="16sp"
+                android:text="  -  "
+                android:gravity="center"
+                android:background="@drawable/num_selector_drawable"/>
+            <TextView
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:id="@+id/hydro_to_sell"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:text="0"
+                android:layout_weight="1"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="0.4"
+                android:layout_height="match_parent"
+                android:textColor="@color/colorBlack"
+                android:id="@+id/hydro_increase"
+                android:textSize="16sp"
+                android:text="  +  "
+                android:gravity="center"
+
+                android:background="@drawable/num_selector_drawable"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <View
+
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_weight="1"
+                android:background="#FFFFFF"
+                />
+
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:text="Nuclear"/>
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="25"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/nuke_total"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:text="0"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:textColor="@color/colorBlack"
+                android:id="@+id/nuke_decrease"
+                android:textSize="16sp"
+                android:text="  -  "
+                android:gravity="center"
+                android:layout_weight="0.4"
+                android:background="@drawable/num_selector_drawable"/>
+            <TextView
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:id="@+id/nuke_to_sell"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:text="0"
+                android:layout_weight="1"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:textColor="@color/colorBlack"
+                android:id="@+id/nuke_increase"
+                android:textSize="16sp"
+                android:text="  +  "
+                android:gravity="center"
+                android:layout_weight="0.4"
+                android:background="@drawable/num_selector_drawable"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <View
+
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_weight="1"
+                android:background="#FFFFFF"
+                />
+
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Income"/>
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp"
+                android:id="@+id/total_income_on_sale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layout_weight="1"
+                android:text="0"/>
+        </TableRow>
+    </TableLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorBlack"
+        android:id="@+id/balance_num"
+        android:layout_gravity="center_horizontal"
+
+        android:textSize="20sp"
+        android:text="$0"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/back_button"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:layout_gravity="center_horizontal"
+            android:text="Cancel Sale"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/confirm_sale"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:layout_gravity="center_horizontal"
+            android:text="Confirm Sale"/>
+
+    </LinearLayout>
+
+</LinearLayout>
