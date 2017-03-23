@@ -47,30 +47,21 @@ public class ConsumerActivity extends AppCompatActivity implements View.OnClickL
                 }
             });
         }
-
+        grocery.setClickable(!haveBuilding[0]);
+        grocery.setEnabled(!haveBuilding[0]);
+        school.setClickable(!haveBuilding[1]);
+        school.setEnabled(!haveBuilding[1]);
+        cityHall.setClickable(!haveBuilding[2]);
+        cityHall.setEnabled(!haveBuilding[2]);
+        hospital.setClickable(!haveBuilding[3]);
+        hospital.setEnabled(!haveBuilding[3]);
         disableBuiltConsumers();
     }
     private void disableBuiltConsumers(){
 
-        if(haveBuilding[0]){
-            grocery.setClickable(false);
-            grocery.setEnabled(false);
-        }
         grocery.setOnClickListener(this);
-        if(haveBuilding[1]){
-            school.setClickable(false);
-            school.setEnabled(false);
-        }
         school.setOnClickListener(this);
-        if(haveBuilding[2]){
-            cityHall.setClickable(false);
-            cityHall.setEnabled(false);
-        }
         cityHall.setOnClickListener(this);
-        if(haveBuilding[3]){
-            hospital.setClickable(false);
-            hospital.setEnabled(false);
-        }
         hospital.setOnClickListener(this);
 
     }

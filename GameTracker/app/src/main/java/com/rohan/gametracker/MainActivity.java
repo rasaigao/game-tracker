@@ -17,6 +17,7 @@ import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.rohan.gametracker.Buildings.Achievement;
 import com.rohan.gametracker.Buildings.PowerSource;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -133,13 +134,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mPowerSourceList.add(new PowerSource(powerSource));
         mBankBalance -= mPowerSourceList.get(mPowerSourceList.size()-1).getCost();
 
+
     }
+
 
     private void addConsumer(Achievement.Type consumer) {
 
         noNewConsumer = false;
         mConsumerList.add(new Achievement(consumer));
         mBankBalance -= mConsumerList.get(mConsumerList.size()-1).getCost();
+        mConsumptionText.setText(Integer.toString(mConsumption));
+    }
+    //OVERLOADED FOR SALES
+    private void addProducer(PowerSource.Type powerSource, boolean b) {
+        b = true;
+        noNewProducer = false;
+        mPowerSourceList.add(new PowerSource(powerSource));
+        mBankBalance -= mPowerSourceList.get(mPowerSourceList.size()-1).getCost();
+        mBankBalance += mPowerSourceList.get(mPowerSourceList.size()-1).getCost();
+
+    }
+
+
+    private void addConsumer(Achievement.Type consumer, boolean b) {
+        b = true;
+        noNewConsumer = false;
+        mConsumerList.add(new Achievement(consumer));
+        mBankBalance -= mConsumerList.get(mConsumerList.size()-1).getCost();
+        mBankBalance += mConsumerList.get(mConsumerList.size()-1).getCost();
         mConsumptionText.setText(Integer.toString(mConsumption));
     }
 
@@ -189,7 +211,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 i.putExtra("HAVE_BUILDING", haveBuilding);
                 i.putExtra("BALANCE", mBankBalance);
                 i.putExtra("TYPE_NUMS", getPowerSourceNumbers());
-                startActivity(i);
+                startActivityForResult(i, 2);
 
                 break;
 
@@ -252,7 +274,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
     private boolean spaceOnBoard(){
-        return(mConsumerList.size() + mPowerSourceList.size() <= 16);
+        return(mConsumerList.size() + mPowerSourceList.size() < 16);
     }
     private void boardFilledMessage(){
 
@@ -302,6 +324,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (resultCode == Activity.RESULT_OK) {
                     addProducer(getPowerSourceType(data.getIntExtra("SWITCHER", 0)));
                 }
+                break;
+            case(2):
+
+                if (resultCode == Activity.RESULT_OK) {
+                    sellItems(data.getBooleanArrayExtra("NEW_CONSUMERS"), data.getIntArrayExtra("NEW_PRODUCERS"), data.getIntExtra("INCOME", 0));
+                }
         }
         updateValues();
 
@@ -330,7 +358,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             youWin();
 
         }
-        if(mBankBalance < 0){
+        if(mBankBalance < 0 ){
             youLose();
         }
 
@@ -387,4 +415,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             // could set text for a timer here
         }
     }
+
+    private void sellItems(boolean[] newHaveBuilding, int[] newTypeArray, int incomeFromSale){
+        mBankBalance += incomeFromSale;
+        int i = 0;
+        int j = 0;
+
+        mConsumerList.clear();
+        mPowerSourceList.clear();
+        addConsumer(Achievement.Type.HOUSE);
+
+
+        for (boolean b : newHaveBuilding){
+            if(b && haveBuilding[i]) {
+
+                addConsumer(getAchievementType(i), false);
+            }
+            haveBuilding[i] = (b && haveBuilding[i]);
+            i++;
+        }
+
+        for(int num : newTypeArray){
+            for(int k = 0; k < num; k++){
+                addProducer(getPowerSourceType(j), false);
+            }
+            j++;
+        }
+
+        noNewProducer = false;
+        noNewConsumer = false;
+        updateValues();
+    }
+
 }

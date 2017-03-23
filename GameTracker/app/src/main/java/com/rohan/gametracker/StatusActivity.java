@@ -73,7 +73,7 @@ public class StatusActivity extends AppCompatActivity {
         }
 
         TextView emptySpaces = (TextView) findViewById(R.id.empty_num);
-        emptySpaces.setText(Integer.toString(16-subTotalOne-total) + " Empty Spaces");
+        emptySpaces.setText(Integer.toString(15-subTotalOne-total) + " Empty Spaces");
 
 
     }

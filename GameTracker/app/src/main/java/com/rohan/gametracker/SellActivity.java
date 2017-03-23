@@ -1,5 +1,6 @@
 package com.rohan.gametracker;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,8 +9,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 public class SellActivity extends AppCompatActivity implements View.OnClickListener, android.widget.CompoundButton.OnCheckedChangeListener {
     
@@ -22,10 +21,24 @@ public class SellActivity extends AppCompatActivity implements View.OnClickListe
     private Button mCancelSale;
     private Button mConfirmSale;
 
+    private CheckBox[] mConsumerCheckBoxes;
+
+    private int[] saleValuesConsumer = {10, 25, 50, 100};
+
+    private int[] saleValuesProducer = {5, 8, 10, 18, 25};
+
+    private int saleValue = 0;
     private int[] typeArray;
+    TextView[] mProducerToSell;
+    TextView[] mProducerTotals;
+
+    private int currentCount;
+    private int currentTotal;
+    private int tempCount;
+    private int tempTotal;
 
     private boolean[] haveBuilding;
-    private boolean[] consumerToSell = {false, false, false, false};
+    private boolean[] consumerToKeep = {false, false, false, false};
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +54,7 @@ public class SellActivity extends AppCompatActivity implements View.OnClickListe
         };
 
         //Initialize Consumer CheckBoxes
-        CheckBox[] mConsumerCheckBoxes = {
+        mConsumerCheckBoxes = new CheckBox[]{
                 (CheckBox) findViewById(R.id.gs_check),
                 (CheckBox) findViewById(R.id.sc_check),
                 (CheckBox) findViewById(R.id.ch_check),
@@ -49,7 +62,7 @@ public class SellActivity extends AppCompatActivity implements View.OnClickListe
         };
 
         //Initialize Producer Total TextViews
-        TextView[] mProducerTotals = {
+        mProducerTotals = new TextView[]{
                 (TextView) findViewById(R.id.coal_total),
                 (TextView) findViewById(R.id.wind_total),
                 (TextView) findViewById(R.id.solar_total),
@@ -58,7 +71,7 @@ public class SellActivity extends AppCompatActivity implements View.OnClickListe
         };
 
         //Initialize Producer ToSell TextViews
-        TextView[] mProducerToSell = {
+        mProducerToSell = new TextView[]{
                 (TextView) findViewById(R.id.coal_to_sell),
                 (TextView) findViewById(R.id.wind_to_sell),
                 (TextView) findViewById(R.id.solar_to_sell),
@@ -85,6 +98,7 @@ public class SellActivity extends AppCompatActivity implements View.OnClickListe
 
         mBankBalance = (TextView) findViewById(R.id.balance_num);
 
+        mTotalIncomeOnSale = (TextView) findViewById(R.id.total_income_on_sale);
         mConfirmSale = (Button) findViewById(R.id.confirm_sale);
         mCancelSale = (Button) findViewById(R.id.back_button);
 
@@ -107,6 +121,10 @@ public class SellActivity extends AppCompatActivity implements View.OnClickListe
             mProducerTotals[n].setText(Integer.toString(typeArray[n]));
 
         }
+
+
+        tempCount = currentCount;
+        tempTotal = currentTotal;
 
         setListeners(mProducerIncrease, mProducerDecrease, mConsumerCheckBoxes, mCancelSale, mConfirmSale);
 
@@ -158,28 +176,55 @@ public class SellActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
         }
+        mTotalIncomeOnSale.setText(Integer.toString(saleValue));
 
-        updateTotalSaleValue();
+
     }
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked){
             switch(compoundButton.getId()){
                 case R.id.gs_check:
-                    consumerToSell[0] = isChecked;
+                    consumerToKeep[0] = isChecked;
+                    if(isChecked){
+                        saleValue += saleValuesConsumer[0];
+                    }
+                    else{
+                        saleValue -= saleValuesConsumer[0];
+                    }
                     break;
                 case R.id.sc_check:
-                    consumerToSell[1] = isChecked;
+                    consumerToKeep[1] = isChecked;
+                    if(isChecked){
+                        saleValue += saleValuesConsumer[1];
+                    }
+                    else{
+                        saleValue -= saleValuesConsumer[1];
+                    }
                     break;
                 case R.id.ch_check:
-                    consumerToSell[2] = isChecked;
+                    consumerToKeep[2] = isChecked;
+                    if(isChecked){
+                        saleValue += saleValuesConsumer[2];
+                    }
+                    else{
+                        saleValue -= saleValuesConsumer[2];
+                    }
                     break;
                 case R.id.hosp_check:
-                    consumerToSell[3] = isChecked;
+                    consumerToKeep[3] = isChecked;
+                    if(isChecked){
+                        saleValue += saleValuesConsumer[3];
+                    }
+                    else{
+                        saleValue -= saleValuesConsumer[3];
+                    }
                     break;
                 default:
                     break;
+
             }
-        updateTotalSaleValue();
+        mTotalIncomeOnSale.setText(Integer.toString(saleValue));
+
     }
     
     private void setListeners(TextView[] a, TextView[] b, CheckBox[] cb, Button b1, Button b2){
@@ -202,17 +247,62 @@ public class SellActivity extends AppCompatActivity implements View.OnClickListe
 
     private void increaseButtonPressed(int index){
 
+        currentCount = Integer.parseInt(mProducerToSell[index].getText().toString());
+        currentTotal = typeArray[index];
+        tempTotal = Integer.parseInt(mProducerTotals[index].getText().toString());
+
+        if(currentCount < currentTotal && currentTotal > 0){
+            tempCount = currentCount + 1;
+            tempTotal = tempTotal - 1;
+            mProducerToSell[index].setText(Integer.toString(tempCount));
+            mProducerTotals[index].setText(Integer.toString(tempTotal));
+            saleValue += (saleValuesProducer[index]);
+        }
+
     }
     private void decreaseButtonPressed(int index){
+
+        currentCount = Integer.parseInt(mProducerToSell[index].getText().toString());
+        tempTotal = Integer.parseInt(mProducerTotals[index].getText().toString());
+        currentTotal = typeArray[index];
+
+
+        if(currentCount > 0 && tempTotal < currentTotal){
+            tempCount = currentCount - 1;
+            tempTotal = tempTotal + 1;
+            mProducerToSell[index].setText(Integer.toString(tempCount));
+            mProducerTotals[index].setText(Integer.toString(tempTotal));
+            saleValue -= (saleValuesProducer[index]);
+        }
 
     }
 
     private void confirmSale(){
+        int i = 0;
+        int j = 0;
+        for(CheckBox cb : mConsumerCheckBoxes){
 
 
-    }
+                consumerToKeep[i] = !cb.isChecked();
 
-    private void updateTotalSaleValue(){
+            i++;
+        }
+
+        for(TextView tv : mProducerTotals){
+
+            typeArray[j] = Integer.parseInt(tv.getText().toString());
+            j++;
+        }
+
+
+        Intent resultIntent;
+        resultIntent = new Intent();
+        resultIntent.putExtra("INCOME", saleValue);
+        resultIntent.putExtra("NEW_CONSUMERS", consumerToKeep);
+        resultIntent.putExtra("NEW_PRODUCERS", typeArray);
+
+        setResult(Activity.RESULT_OK, resultIntent);
+        finish();
 
     }
 
