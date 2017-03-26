@@ -14,22 +14,22 @@
         android:id="@+id/button_gs"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:text="Grocery Store (Cost:20, Consumption: 10)"/>
+        android:text="Grocery Store (Cost: 15, Consumption: 10)"/>
     <Button
         android:id="@+id/button_school"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:text="School (Cost:50, Consumption: 15"/>
+        android:text="School (Cost: 30, Consumption: 15"/>
     <Button
         android:id="@+id/button_ch"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:text="City Hall (Cost:100, Consumption: 30)"/>
+        android:text="City Hall (Cost: 100, Consumption: 20)"/>
     <Button
         android:id="@+id/button_hosp"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:text="Hospital (Cost:200, Consumption: 50)"/>
+        android:text="Hospital (Cost: 200, Consumption: 55)"/>
     <TextView
         android:id="@+id/balance_text"
         android:layout_width="wrap_content"

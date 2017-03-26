@@ -25,9 +25,9 @@ public class SellActivity extends AppCompatActivity implements View.OnClickListe
 
     private CheckBox[] mConsumerCheckBoxes;
 
-    private int[] saleValuesConsumer = {10, 25, 50, 100};
+    private int[] saleValuesConsumer = {7, 15, 50, 100};
 
-    private int[] saleValuesProducer = {5, 8, 10, 18, 25};
+    private int[] saleValuesProducer = {2, 5, 7, 12, 25};
 
     private int saleValue = 0;
     private int[] typeArray;

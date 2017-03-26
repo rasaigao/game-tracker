@@ -74,7 +74,7 @@ public class ConsumerActivity extends AppCompatActivity implements View.OnClickL
         switch (v.getId()) {
             case R.id.button_gs:
 
-                if(valueBalance >= 20) {
+                if(valueBalance >= 15) {
                     resultIntent = new Intent();
                     resultIntent.putExtra("SWITCHER", 0);
                     setResult(Activity.RESULT_OK, resultIntent);
@@ -86,7 +86,7 @@ public class ConsumerActivity extends AppCompatActivity implements View.OnClickL
                 break;
 
             case R.id.button_school:
-                if(valueBalance >= 50) {
+                if(valueBalance >= 30) {
                     resultIntent = new Intent();
                     resultIntent.putExtra("SWITCHER", 1);
                     setResult(Activity.RESULT_OK, resultIntent);

@@ -22,22 +22,23 @@ public class PowerSource {
     private void setDetails(){
         switch (mType){
             case COAL:
-                addValues(10, 2, false);
+                addValues(5, 3, false);
                 break;
             case WIND:
-                addValues(15, 5, true);
+                addValues(10, 7, true);
                 break;
             case SOLAR:
-                addValues(20, 8, true);
+                addValues(15, 11, true);
                 break;
             case HYDRO:
-                addValues(35, 15, true);
+                addValues(25, 15, true);
                 break;
             case NUCLEAR:
-                addValues(50, 18, true);
+                addValues(50, 20, true);
                 break;
 
         }
+
     }
     private void addValues(int cost, int production, boolean isClean){
         mCost = cost;

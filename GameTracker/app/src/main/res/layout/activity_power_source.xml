@@ -15,27 +15,27 @@
         android:id="@+id/button_coal"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:text="Coal (Cost: 10, Production: 2)"/>
+        android:text="Coal (Cost: 5, Production: 3)"/>
     <Button
         android:id="@+id/button_wind"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:text="Wind (Cost:15, Production: 5)"/>
+        android:text="Wind (Cost:10, Production: 7)"/>
     <Button
         android:id="@+id/button_solar"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:text="Solar (Cost:20, Production: 8)"/>
+        android:text="Solar (Cost:15, Production: 11)"/>
     <Button
         android:id="@+id/button_hydro"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:text="Hydro (Cost:35, Production: 15)"/>
+        android:text="Hydro (Cost:25, Production: 15)"/>
     <Button
         android:id="@+id/button_nuke"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:text="Nuclear (Cost:50, Production: 18)"/>
+        android:text="Nuclear (Cost:50, Production: 20)"/>
     <TextView
         android:id="@+id/balance_text"
         android:layout_width="wrap_content"

@@ -66,7 +66,7 @@ public class PowerSourceActivity extends AppCompatActivity implements View.OnCli
         switch (v.getId()) {
             case R.id.button_coal:
 
-                if(valueBalance >= 10) {
+                if(valueBalance >= 5) {
                     resultIntent = new Intent();
                     resultIntent.putExtra("SWITCHER", 0);
                     setResult(Activity.RESULT_OK, resultIntent);
@@ -78,7 +78,7 @@ public class PowerSourceActivity extends AppCompatActivity implements View.OnCli
                 break;
 
             case R.id.button_wind:
-                if(valueBalance >= 15) {
+                if(valueBalance >= 10) {
                     resultIntent = new Intent();
                     resultIntent.putExtra("SWITCHER", 1);
                     setResult(Activity.RESULT_OK, resultIntent);
@@ -91,7 +91,7 @@ public class PowerSourceActivity extends AppCompatActivity implements View.OnCli
 
             case R.id.button_solar:
 
-                if(valueBalance >= 20) {
+                if(valueBalance >= 15) {
                     resultIntent = new Intent();
                     resultIntent.putExtra("SWITCHER", 2);
                     setResult(Activity.RESULT_OK, resultIntent);
@@ -104,7 +104,7 @@ public class PowerSourceActivity extends AppCompatActivity implements View.OnCli
 
             case R.id.button_hydro:
 
-                if(valueBalance >= 35) {
+                if(valueBalance >= 25) {
                     resultIntent = new Intent();
                     resultIntent.putExtra("SWITCHER", 3);
                     setResult(Activity.RESULT_OK, resultIntent);

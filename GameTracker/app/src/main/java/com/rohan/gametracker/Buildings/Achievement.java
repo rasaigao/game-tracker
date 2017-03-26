@@ -22,19 +22,19 @@ public class Achievement {
     private void setDetails(){
         switch (mType){
             case HOUSE:
-                addValues(0, 1, 0);
+                addValues(0, 2, 0);
                 break;
             case GROCERY_STORE:
-                addValues(20, 10, 1);
+                addValues(15, 10, 1);
                 break;
             case SCHOOL:
-                addValues(50, 15, 2);
+                addValues(30, 15, 2);
                 break;
             case CITY_HALL:
-                addValues(100, 30, 3);
+                addValues(100, 20, 3);
                 break;
             case HOSPITAL:
-                addValues(200, 50, 4);
+                addValues(200, 55, 4);
                 break;
 
         }
