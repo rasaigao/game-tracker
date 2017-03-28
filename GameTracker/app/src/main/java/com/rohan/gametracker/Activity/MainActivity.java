@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private int mTurnNumber = 1;
     private int mProduction = 0;
     private int mConsumption = 0;
-    private int mBankBalance = 10;
+    private int mBankBalance = 8;
     private int totalPayments;
 
 
@@ -262,7 +262,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         MyCountDown timer = new MyCountDown(2000, 1000);
         timer.start();
-
+        makePayments();
         updateValues();
         mBankBalance += (mProduction - mConsumption);
         mBankBalanceText.setText("Account: $" + Integer.toString(mBankBalance));
@@ -335,6 +335,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (resultCode == Activity.RESULT_OK) {
                     addConsumer(getAchievementType(data.getIntExtra("SWITCHER", 0)));
                     haveBuilding[data.getIntExtra("SWITCHER", 0)] = true;
+                    updateValues();
 
                     // TODO Update your TextView.
                 }
@@ -345,12 +346,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case (1):
                 if (resultCode == Activity.RESULT_OK) {
                     addProducer(getPowerSourceType(data.getIntExtra("SWITCHER", 0)));
+                    updateValues();
                 }
                 break;
             case(2):
 
                 if (resultCode == Activity.RESULT_OK) {
                     sellItems(data.getBooleanArrayExtra("NEW_CONSUMERS"), data.getIntArrayExtra("NEW_PRODUCERS"), data.getIntExtra("INCOME", 0));
+                    updateValues();
                 }
                 break;
             case (3):
@@ -359,6 +362,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     turns = 1;
                     amount = data.getIntExtra("AMOUNT", 0);
                     mPaymentList.add(new Payment(amount, turns, true));
+                    updateValues();
                 }
 
                 break;
@@ -368,6 +372,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     turns = data.getIntExtra("TURNS", 0);
                     amount = data.getIntExtra("AMOUNT", 0);
                     mPaymentList.add(new Payment(amount, turns, true));
+                    updateValues();
                 }
 
                 break;
@@ -377,6 +382,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     turns = 1;
                     amount = data.getIntExtra("AMOUNT", 0);
                     mPaymentList.add(new Payment(amount, turns, false));
+                    updateValues();
                 }
 
                 break;
@@ -386,11 +392,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     turns = data.getIntExtra("TURNS", 0);
                     amount = data.getIntExtra("AMOUNT", 0);
                     mPaymentList.add(new Payment(amount, turns, false));
+                    updateValues();
                 }
 
                 break;
         }
-        updateValues();
+
 
     }
     private void updateValues(){
@@ -408,14 +415,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         noNewProducer = true;
         noNewConsumer = true;
-        makePayments();
+
         mBankBalanceText.setText("Account: $" + Integer.toString(mBankBalance));
         mConsumptionText.setText(Integer.toString(mConsumption));
         mProductionText.setText(Integer.toString(mProduction));
         mProfitText.setText(Integer.toString(mProduction-mConsumption));
 
         if(mConsumerList.size() == 5){
-            youWin();
+            if(isWin()){
+                youWin();
+            }
 
         }
         if(mBankBalance < 0 ){
@@ -450,8 +459,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void youWin(){
 
     }
+    private boolean isWin(){
+        if((mProduction - mConsumption + totalPayments) >= 0){
+            for(PowerSource ps : mPowerSourceList){
+                if(!ps.isClean()){
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
     private void youLose(){
+        if((mProduction - mConsumption + totalPayments) < 0 && mConsumerList.size() == 1 && mPowerSourceList.size() == 0){
 
+        }
     }
 
     private class MyCountDown extends CountDownTimer
